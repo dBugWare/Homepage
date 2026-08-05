@@ -1,0 +1,340 @@
+/*this layout has a ton of gradients, so messing with the colors is not super straightforward. sorry!
+
+for a gradient, the first color is the one on top and the second color is the one on the bottom.*/
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, sans-serif;
+    background: linear-gradient(#313131, #070201);
+    background-attachment: fixed;
+}
+
+/* this is the highlight color for when you select text! you can change that with css. pretty cool huh? */
+::selection {
+    background-color: #f2960e;
+}
+
+/* this is the page title up top. the background is a gradient, and the text is transparent; "background-clip:text" cuts out the whole background except for the shape of the text. neat trick for making text shiny!
+background-clip works for images too if you want text to have polka dots or something. */
+h1 {
+    background: linear-gradient(#ccf52a, #687a00);
+    color: transparent;
+    background-clip: text;
+    font-family: 'Audiowide', Impact;
+    font-size: 40pt;
+    font-style: italic;
+    text-transform: uppercase;
+    margin: 0;
+    margin-bottom: -10px;
+}
+
+/* end of page title */
+
+h2 {
+    margin: 0;
+    font-family: 'Impact';
+    font-weight: 400;
+    font-size: 24pt;
+    text-align: center;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: double underline;
+}
+
+p {
+    margin: 5px;
+}
+
+/* the whole page is contained in this container. */
+.container {
+    width: 80%;
+    height: auto;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* this is a container for the title. you could use this to put a color or a banner image behind the page title. */
+#headerbar {
+    width: 100%;
+}
+
+/* this is the orange navigation links bar.*/
+.nav {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+
+    border-top-left-radius: 100px; /* this is what gives it that curve on the left. delete it if you want it to be square. */
+
+    background-image: linear-gradient(#7500c9, #3f007a);
+    box-shadow: 0px 0px 2px #ded6e5;
+}
+
+/* this styles links in the navigation bar. */
+.nav a {
+    display: inline-block;
+    font-size: 15px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    text-decoration: none; /* this makes the links not be underlined. */
+
+    background-image: linear-gradient(#7500c9, #3f007a);
+    color: #fff6d3;
+    text-shadow: 0px 2px 1px #26003d;box-shadow: 0px 0px 2px #260044;
+}
+
+/* when a link is hovered over, swap the gradient from light -> dark to dark -> light so it looks indented! */
+.nav a:hover, .nav a:focus {
+    background-image: linear-gradient(#7500c9, #3f007a);
+    text-shadow: none;
+}
+
+
+/* this is the container for the bar underneath the navigation links. it has the marquee in it. */
+.undernav {
+    box-shadow: 0px 2px 5px #696969;
+    position: relative; /* this is so that the shadow is cast on the divs under it. */
+    display: flex;
+    width: 100%;
+    height: 34px;
+}
+
+/* this is the weird bit of space next to the marquee. the gradient bg matches the border of the marquee so it looks like it's one continuous div! */
+#marqueehead {
+    width: 60%;
+    color: rgb(170, 255, 0);
+    font-size: 16pt;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    font-family: 'Caveat Brush', sans-serif;
+    background: linear-gradient(#000000 50%, #000000);
+    
+}
+
+/* all marquees will look like this. */
+marquee {
+    width: 40%;
+    padding: 2px;
+
+    /* these border properties make the border a shiny gradient! 
+    just so you know, you can't use border-radius with a border-image, so no rounded corners. */
+    border: 6px solid;
+    border-image: linear-gradient(#000000 50%, #000000);
+    border-image-slice: 5;
+    
+    /* inset box shadow gives it that layered look. */
+    box-shadow: inset rgba(0, 0, 0, 1) 0px 0px 5px; 
+    
+    background-color: #c3ee35;
+    font-family: 'Geo', monospace;
+    text-transform: uppercase;
+    
+}
+
+/* some styling that applies to multiple divs. */
+
+
+.leftcolumn img,
+.rightcolumn img,
+.bodymain img {
+    max-width: 100%;
+} /* this prevents images from being bigger than the div they're in */
+
+
+.rightcolumn,
+.leftcolumnbox,
+.innerbox {
+    overflow: auto;
+    scrollbar-width: thin;
+}
+
+.bodymain,
+.leftcolumn {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+} /* rounding just the bottom corners so the top lines up nicely. */
+
+/* end of styling for multiple dive */
+
+
+/* first sidebar! */
+.leftcolumn {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: linear-gradient(#000000, #3d3d3d);
+    padding: 5px;
+    gap: 10px;
+    font-size: 10pt;
+    line-height: 1;
+}
+
+.leftcolumn h2 {
+    align-self: flex-start;
+    text-shadow: #425f00 2px 2px 1px;
+    margin-bottom: -7px;
+    font-size: 14pt;
+    color: #dbff38;
+}
+
+.leftcolumnbox ul {
+    padding-left: 20px;
+}
+
+/* boxes for putting things in in the sidebar. another inset shadow! */
+.leftcolumnbox {
+    border: #070201 1px solid;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #363636;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.5);
+    color: #b1ff2a;
+}
+
+/* socmed icon holder */
+.socials {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+/* makes all the icons small and the same size. they're actually very big */
+.socials img {
+    width: 40px;
+}
+
+/* end of left sidebar! */
+
+
+/* main section of the page */
+.bodymain {
+    border: 1px solid #5d0085;
+    background: linear-gradient(#7500c9, #3f007a);
+    padding: 10px;
+    width: 60%;
+    font-size: 10pt;
+}
+
+/* this puts a smaller white box on top of the red gradient so the text is more legible. this off-white is on the warm side, so you'll probably want a cooler shade if you change to a cool-colored gradient! */
+.innermain {
+    background-color: rgb(135, 135, 135);
+    width: 100%;    
+    border-radius: 5px;
+    height: 100%;
+    padding: 5px;
+}
+
+/* end of main section */
+
+/* right sidebar! */
+.rightcolumn {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+    gap: 10px;
+}
+
+.rightbox {
+    background: linear-gradient(#7500c9, #3f007a);
+    border-radius: 10px;
+    width: 100%;
+    padding: 10px;
+    max-height: 500px;
+}
+
+/* like the main div, the boxes in the right column have this inner layer for putting the text in so it's a bit more legible.
+this one's a little transparent and will blur the background it's over. this'll only be noticeable if you put a picture as the background of rightbox instead of a gradient. */
+.innerbox {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background-color: rgba(209, 254, 59, 0.659);
+    border-radius: 5px;
+    border: 1px solid rgb(183, 255, 59);
+    padding: 5px;
+    height: 100%;
+    scrollbar-color: #B2ED1C #E2ED1D;
+    font-size: 13px;
+}
+
+/* end of right sidebar and end of the layout!! */
+
+/* smaller screen styling */
+
+@media only screen and (max-width: 1301px) {
+    .container {
+        width: 95%;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+
+    #headerbar {
+        order: 1;
+    }
+
+    .nav {
+        order: 2;
+    }
+
+    .undernav {
+        order: 3;
+    }
+
+    .bodymain {
+        order: 4;
+    }
+
+    .rightcolumn {
+        order: 5;
+    }
+
+    .leftcolumn {
+        order: 6;
+    }
+
+    .rightbox {
+        width: 200px;
+        max-height: 200px;
+    }
+
+    .rightcolumn,
+    .leftcolumn {
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .bodymain {
+        width: 100%;
+    }
+}
